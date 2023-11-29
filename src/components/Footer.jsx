@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer class="container-fluid text-center">
-      <a href="#myPage" title="To Top">
+      <a href="#home" title="To Top">
         <span class="glyphicon glyphicon-chevron-up"></span>
       </a>
       <p>
