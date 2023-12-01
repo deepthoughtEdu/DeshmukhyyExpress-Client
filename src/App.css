@@ -175,3 +175,33 @@ footer .glyphicon {
     font-size: 150px;
   }
 }
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.services-section {
+  margin-bottom: 40px;
+}
+.services-section h2 {
+  color: #FF6F61;
+}
+.services-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+.services-section li {
+  margin-bottom: 10px;
+}
