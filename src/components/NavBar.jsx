@@ -3,7 +3,7 @@ import React from "react";
 export default function NavBar(props) {
 
     return (
-        <header className="page-header">
+        <header className="page-header mt-0">
         <div className="d-flex justify-content-between w-100 align-items-center">
             <div className="d-flex">
             <img
@@ -12,8 +12,8 @@ export default function NavBar(props) {
                 alt="logo"
             />
             <div className="ml-2 my-auto">
-                <span className="header-text1 mr-1 text-uppercase">Deshmukhyy</span>
-                <span className="header-text2 text-uppercase">Express</span>
+                <span className="header-text1 mr-1 text-uppercase">Movies</span>
+                <span className="header-text2 text-uppercase">Sync</span>
             </div>
             </div>
         </div>

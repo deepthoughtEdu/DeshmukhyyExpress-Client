@@ -31,7 +31,7 @@ export default function Home() {
             
             <div className="px-4 mt-5">
                 <div className="row mt-5 justify-content-center">
-                    <h3 className="">Orders and deliveries</h3>
+                    <h1 className="mt-5">All movies</h1>
                 </div>
                 
                 <Slider {...settings}>
