@@ -1,19 +1,9 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './screens/Home';
-import AboutUs from './screens/About';
-import Services from './screens/Services';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/services" element={<Services />} />
-      </Routes>
-    </BrowserRouter>
-  )
+  return <Home/>
 }
 
 export default App;
