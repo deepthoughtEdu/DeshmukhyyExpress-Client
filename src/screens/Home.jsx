@@ -11,7 +11,6 @@ import movies from '../data/movies.json';
 
 export default function Home() {
     const [items, setItems] = useState(movies);
-    console.log(movies)
 
     const settings = {
         className:"center-slider",
