@@ -12,7 +12,7 @@ export default function NavBar(props) {
                 alt="logo"
             />
             <div className="ml-2 my-auto">
-                <span className="header-text1 mr-1 text-uppercase">Movies</span>
+                <span className="header-text1 mx-2 text-uppercase">Movies</span>
                 <span className="header-text2 text-uppercase">Sync</span>
             </div>
             </div>
