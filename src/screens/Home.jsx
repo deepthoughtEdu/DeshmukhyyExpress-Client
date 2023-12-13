@@ -40,6 +40,7 @@ export default function Home() {
 
     /** Function to handle the submit event */
     const dataOnSubmit = async () => {
+      console.log(values)
       setItems((previousData) => ([values, ...previousData]));
       setOpen(false);
 
@@ -89,12 +90,12 @@ export default function Home() {
                     <DialogContent>
                         <form className="col-12 form-container" id="request-form">
                         <div className="mb-3">
-                              <label for="title" className="form-label">Title for the movie</label>
+                              <label htmlFor="title" className="form-label">Title for the movie</label>
                               <input onChange={valueOnChange} defaultValue={values.title} required type="text" className="form-control" placeholder="Enter title" name="title" id="title"/>
                           </div>
 
                           <div className="mb-3">
-                              <label for="rating-selector" className="form-label">
+                              <label htmlFor="rating-selector" className="form-label">
                                   Rate out of 5
                               </label>
                               <input onChange={valueOnChange} defaultValue={values.rating} required type="range" className="form-range w-100" min="0" max="5" step="1" name="rating" id="rating-selector"/>
@@ -102,17 +103,17 @@ export default function Home() {
                           </div>
 
                           <div className="mb-3">
-                              <label for="showTime" className="form-label">Show time (when the movie starts)</label>
+                              <label htmlFor="showTime" className="form-label">Show time (when the movie starts)</label>
                               <input onChange={valueOnChange} defaultValue={values.showTime} required type="time" className="form-control" name="showTime" id="showTime"/>
                           </div>
 
                           <div className="mb-3">
-                              <label for="fare" className="form-label">Ticket price</label>
+                              <label htmlFor="fare" className="form-label">Ticket price</label>
                               <input onChange={valueOnChange} defaultValue={values.fare} required type="number" min="1" step="1" className="form-control" placeholder="Enter price for tickets" name="fare" id="fare"/>
                           </div>
 
                           <div className="mb-3">
-                              <label for="year" className="form-label">Year of the movie</label>
+                              <label htmlFor="year" className="form-label">Year of the movie</label>
                               <input onChange={valueOnChange} defaultValue={values.releaseYear} required type="number" min="1800" max="2030" step="1" className="form-control" placeholder="Enter year of release" name="releaseYear" id="year"/>
                           </div>
                             
