@@ -29,7 +29,7 @@ export default function Home() {
         <>
             <NavBar  />
             
-            <div className="px-4 mt-5">
+            <div className="px-4 mt-5 background">
                 <div className="row mt-5 justify-content-center">
                     <h1 className="mt-5">All movies</h1>
                 </div>
