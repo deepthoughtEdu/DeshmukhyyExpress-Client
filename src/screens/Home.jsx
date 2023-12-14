@@ -16,12 +16,12 @@ export default function Home(props) {
 
                   <div className="col-12 col-md-4 col-lg-3 mt-5">
                     <Link to={'/user'} className="justify-content-center d-flex">
-                      <Card className="text-center bg-light border shadow" style={{width: '15rem', borderRadius: '12px'}}>
-                        <Card.Title className="pt-4">
+                      <Card className="text-center bg-light border shadow" style={{borderRadius: '12px'}}>
+                        <h1 className="pt-4">
                           User
-                        </Card.Title>
+                        </h1>
                         <Card.Body className="pb-4">
-                          <FontAwesomeIcon size="4x" color="#0029ff" icon={faUser} />
+                        <img src={"https://clipart-library.com/images/pi7rn845T.png"} style={{width: '250px', height: '220px'}} />
                         </Card.Body>
                       </Card>
                     </Link>
@@ -29,12 +29,12 @@ export default function Home(props) {
 
                   <div className="col-12 col-md-4 col-lg-3 mt-5">
                     <Link to={'/delivery-partner'} className="justify-content-center d-flex">
-                      <Card className="text-center bg-light border shadow" style={{width: '15rem', borderRadius: '12px'}}>
-                        <Card.Title className="pt-4">
+                      <Card className="text-center bg-light border shadow" style={{borderRadius: '12px'}}>
+                        <h1 className="pt-4">
                           Delivery Partner
-                        </Card.Title>
+                        </h1>
                         <Card.Body className="pb-4">
-                          <FontAwesomeIcon size="4x" color="#0029ff" icon={faBiking} />
+                          <img src={"https://cdni.iconscout.com/illustration/premium/thumb/food-parcel-delivery-4650524-3856179.png"} style={{width: '250px', height: '220px'}} />
                         </Card.Body>
                       </Card>
                     </Link>
