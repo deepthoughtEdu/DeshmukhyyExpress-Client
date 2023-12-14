@@ -1,11 +1,13 @@
+import React, { useEffect, useState } from "react";
 import Stepper from "awesome-react-stepper";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCarAlt, faCutlery } from '@fortawesome/free-solid-svg-icons';
 
+import {getImageUrlFromRequirement} from '../utilities';
+
 import requirements from '../data/requirements.json';
-import { useState } from "react";
 
 export default function RequestStepper({onSubmit}) {
     const [category, setCategory] = useState('');
@@ -51,12 +53,39 @@ export default function RequestStepper({onSubmit}) {
 }
 
 function Requirements({data, value, onChange}) {
+    const [requirementImage, setRequirementImage] = useState('');
+
+    useEffect(() => {
+        function initDefaulRequirementImage () {
+            if (value && value.length) {
+                setRequirementImage(getImageUrlFromRequirement(value));
+
+            } else {
+
+                // default is the first requirment in the data array
+                const requirement = data.length ? data[0] : {};
+                setRequirementImage(requirement.image)
+            }
+        }
+
+        initDefaulRequirementImage();
+
+    }, []);
+
+    const valueOnChange = (event) => {
+        onChange(event);
+        setRequirementImage(getImageUrlFromRequirement(event.target.value));
+    }
     return (
         <div className="my-4">
             <h6>Select requirement</h6>
-            <select onChange={onChange} name="requirement" className="form-select">
+            <select onChange={valueOnChange} name="requirement" className="form-select">
                 {data.map((option, index) => <option key={index} defaultChecked={option.value === value} value={option.value}>{option.label}</option>)}
             </select>
+
+            <div className="row justify-content-center mt-4">
+                <img src={requirementImage} style={{height: '200px', objectFit: 'contain'}} />
+            </div>
         </div>
     )
 }

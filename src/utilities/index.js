@@ -1,3 +1,5 @@
+import requirements from '../data/requirements.json';
+
 export const convertTime24to12 = (time) => {
     // Check correct time format and split into components
     time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
@@ -31,4 +33,9 @@ export const generateUUID = () => {
     const v = c === 'x' ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
+}
+
+export const getImageUrlFromRequirement = (requirement) => {
+  let item = requirements.find(e => e.value === String(requirement).toLowerCase().split(' ').join(''));
+  return item && item.image;
 }
