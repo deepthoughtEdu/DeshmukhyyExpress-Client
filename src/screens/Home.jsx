@@ -1,7 +1,5 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faBiking } from '@fortawesome/free-solid-svg-icons';
 
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
@@ -21,7 +19,7 @@ export default function Home(props) {
                           User
                         </h1>
                         <Card.Body className="pb-4">
-                        <img src={"https://clipart-library.com/images/pi7rn845T.png"} style={{width: '250px', height: '220px'}} />
+                        <img alt="" src={"https://clipart-library.com/images/pi7rn845T.png"} style={{width: '250px', height: '220px'}} />
                         </Card.Body>
                       </Card>
                     </Link>
@@ -34,7 +32,7 @@ export default function Home(props) {
                           Delivery Partner
                         </h1>
                         <Card.Body className="pb-4">
-                          <img src={"https://cdni.iconscout.com/illustration/premium/thumb/food-parcel-delivery-4650524-3856179.png"} style={{width: '250px', height: '220px'}} />
+                          <img alt="" src={"https://cdni.iconscout.com/illustration/premium/thumb/food-parcel-delivery-4650524-3856179.png"} style={{width: '250px', height: '220px'}} />
                         </Card.Body>
                       </Card>
                     </Link>
