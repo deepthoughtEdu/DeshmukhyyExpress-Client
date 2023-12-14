@@ -1,38 +1,55 @@
+// Step 1: Import necessary React and external libraries/modules
 import React from "react";
 import moment from "moment";
 import Button from "react-bootstrap/Button";
 
+// Step 2: Define a default set of images for different categories
 const defaultImages = {
-  drop: "/rider.jpg",
-  delivery: "/food.jpeg",
+    drop: "/rider.jpg",
+    delivery: "/food.jpeg",
 };
 
-export default function RequestCard({ data, onOrderAccept, image='', styles = {}, actionButton = false }) {
-  const getCardImage = (cardData) => {
-    let {category} = cardData;
+// Step 3: Define a functional component named 'RequestCard'
+export default function RequestCard({ data, onOrderAccept, image = '', styles = {}, actionButton = false }) {
 
-    return defaultImages[category] || '/default_large.png';
-  };
+    // Step 4: Function to get the card image based on the category
+    const getCardImage = (cardData) => {
+        let { category } = cardData;
 
-  return (
-    <a href="#" className="action-card m-3 text-black px-0 position-relative" style={styles}>
-        <div className="ribbon pe-4 text-capitalize right">
-            {data.category}
-        </div>
-        <img src={image || getCardImage(data)} alt="" className="card__img" />
-        <span className="card__footer pb-2">
-            <span className="text-capitalize">{data.requirement}</span>
-            <span>{moment(data.createdAt).format("Do MMM, YYYY [at] h:mmA")}</span>
-        </span>
+        // Use the default image if no specific image is provided
+        return defaultImages[category] || '/default_large.png';
+    };
 
-        {actionButton ? (
-            <span className="card__action">
-                <Button variant="dark" id={data._id} onClick={onOrderAccept}>
-                    Accept
-                </Button>
+    // Step 5: Render the component
+    return (
+
+        // Step 5.1: Anchor link as the card container with additional classes and styles
+        <a href="#" className="action-card m-3 text-black px-0 position-relative" style={styles}>
+
+            {/* Step 5.2: Ribbon to display the category */}
+            <div className="ribbon pe-4 text-capitalize right">
+                {data.category}
+            </div>
+
+            {/* Step 5.3: Image element for the card */}
+            <img src={image || getCardImage(data)} alt="" className="card__img" />
+
+            {/* Step 5.4: Footer section with details like requirement and creation date */}
+            <span className="card__footer pb-2">
+                <span className="text-capitalize">{data.requirement}</span>
+                <span>{moment(data.createdAt).format("Do MMM, YYYY [at] h:mmA")}</span>
             </span>
-        ) : ''}
-    </a>
 
-  );
+            {/* Step 5.5: Conditional rendering of action button */}
+            {actionButton ? (
+                <span className="card__action">
+                  
+                    {/* Step 5.5.1: Bootstrap Button for accepting the order */}
+                    <Button variant="dark" id={data._id} onClick={onOrderAccept}>
+                        Accept
+                    </Button>
+                </span>
+            ) : ''}
+        </a>
+    );
 }

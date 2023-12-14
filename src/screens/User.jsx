@@ -1,3 +1,4 @@
+// Step 1: Import necessary React and external libraries/modules
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import swal from "sweetalert";
@@ -10,48 +11,51 @@ import IconButton from '@mui/material/IconButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 
-
-import "slick-carousel/slick/slick.css"; 
+// Step 2: Import custom components and modules defined by the developer
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import RequestStepper from "../components/RequestStepper";
-import {generateUUID} from '../utilities';
-
+import { generateUUID } from '../utilities';
 import requirements from '../data/requirements.json';
 import data from '../data/requests.json';
 import RequestCard from "../components/RequestCard";
 
-export default function User (props) {
-    /** State variables and their setter methods */
+// Step 3: Define a functional component named 'User'
+export default function User(props) {
+    // Step 4: Declare state variables and their setter methods
     const [requests, setRequests] = useState(data);
     const [open, setOpen] = useState(false);
 
-    /** Handles the modal show/hide state variables */
+    // Step 5: Define functions to handle modal show/hide state
     const handleClose = () => setOpen(false);
     const handleShow = () => setOpen(true);
 
-    /** Function to handle the submit event */
+    // Step 6: Define function to handle form submission
     const dataOnSubmit = async (data) => {
-
+        // Generate a unique ID for the new request
         data._id = generateUUID();
-        
+
+        // Update the state with the new request
         setRequests((previousData) => ([data, ...previousData]));
+
+        // Close the modal
         setOpen(false);
 
-        swal('Success!',
-        'Created successfully!',
-        'success');
+        // Show success message
+        swal('Success!', 'Created successfully!', 'success');
     }
 
+    // Step 7: Function to get image based on the requirement
     const getImageBasedOnRequirement = (requirement) => {
         let item = requirements.find(e => e.value === String(requirement).toLowerCase().split(' ').join(''));
         return item && item.image;
     }
 
+    // Step 8: Settings configuration for the Slider component
     const settings = {
-        className:"center-slider",
+        className: "center-slider",
         centerMode: true,
         centerPadding: '60px',
         slidesToShow: 3,
@@ -61,50 +65,62 @@ export default function User (props) {
         infinite: true,
         autoplaySpeed: 2500,
         autoplay: true
-      };
-    
+    };
+
+    // Step 9: Render the component
     return (
-      <>
-        <NavBar />
+        <>
+            {/* Step 9.1: Include the 'NavBar' component */}
+            <NavBar />
 
-        <div className="px-4 mt-5 background">
-          <div className="row mt-5 justify-content-center">
-              <h1 className="pt-5 text-center">Orders and deliveries</h1>
-          </div>
-          
-          <Slider {...settings}>
-              {requests.map((item, index) => <RequestCard data={item} image={getImageBasedOnRequirement(item.requirement)} key={index} />)}
-          </Slider>
+            {/* Step 9.2: Main content container */}
+            <div className="px-4 mt-5 background">
+                <div className="row mt-5 justify-content-center">
+                    {/* Step 9.2.1: Heading for the component */}
+                    <h1 className="pt-5 text-center">Orders and deliveries</h1>
+                </div>
 
-        </div>
+                {/* Step 9.3: Slider component for displaying requests */}
+                <Slider {...settings}>
+                    {requests.map((item, index) => <RequestCard data={item} image={getImageBasedOnRequirement(item.requirement)} key={index} />)}
+                </Slider>
+            </div>
 
-        <SpeedDial
-              ariaLabel="SpeedDial basic example"
-              sx={{ position: 'absolute', bottom: 60, right: 60 }}
-              icon={<SpeedDialIcon className="mt-3" />}
-              onClick={handleShow}
+            {/* Step 9.4: SpeedDial for triggering the 'handleShow' function */}
+            <SpeedDial
+                ariaLabel="SpeedDial basic example"
+                sx={{ position: 'absolute', bottom: 60, right: 60 }}
+                icon={<SpeedDialIcon className="mt-3" />}
+                onClick={handleShow}
             />
 
-        <Dialog maxWidth="sm" fullWidth open={open} onClose={handleClose}>
+            {/* Step 9.5: Dialog for adding a new request */}
+            <Dialog maxWidth="sm" fullWidth open={open} onClose={handleClose}>
+                {/* Step 9.5.1: Dialog title */}
                 <DialogTitle>Add new request</DialogTitle>
 
+                {/* Step 9.5.2: Close button for the dialog */}
                 <IconButton onClick={handleClose}
                     sx={{
                         position: 'absolute',
                         right: 8,
                         top: 8,
                         color: (theme) => theme.palette.grey[500],
-                }}>
-                        <FontAwesomeIcon icon={faClose} />
+                    }}
+                >
+                    {/* Step 9.5.2.1: Close icon */}
+                    <FontAwesomeIcon icon={faClose} />
                 </IconButton>
 
+                {/* Step 9.5.3: Dialog content */}
                 <DialogContent>
+                    {/* Step 9.5.3.1: RequestStepper component for user input */}
                     <RequestStepper onSubmit={dataOnSubmit} />
                 </DialogContent>
-
             </Dialog>
 
-        <Footer />
-      </>
+            {/* Step 9.6: Include the 'Footer' component */}
+            <Footer />
+        </>
     );
 }
