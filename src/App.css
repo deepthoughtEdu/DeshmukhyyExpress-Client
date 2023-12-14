@@ -70,7 +70,7 @@ background-color: transparent !important;
 font-size: 26px !important;
 }
 
-.slick-slide:not(.slick-current) .request-card {
+.slick-slide:not(.slick-current) .action-card {
 opacity: .5;
 }
 

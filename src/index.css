@@ -154,5 +154,5 @@ table td, .table th {
   width: 100%; 
   height: 100%;
   background-image: url('../public/bg.jpg');
-  filter: brightness(.5) opacity(.5);
+  filter: brightness(.4) opacity(.3);
 }
