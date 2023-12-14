@@ -42,7 +42,7 @@ export default function RequestStepper({onSubmit}) {
                     <input placeholder="Enter price in (INR)" name="fare" onChange={valueOnChange} className="w-100" type="number" defaultValue={values.fare} id="fare"/>
                 </div>
                 <div className="row justify-content-center mt-4">
-                <img src={'https://i.giphy.com/bO7ab7fElg0AU.webp'} style={{height: '200px', objectFit: 'contain'}} />
+                <img alt="" src={'https://i.giphy.com/bO7ab7fElg0AU.webp'} style={{height: '200px', objectFit: 'contain'}} />
             </div>
             </div>
             <div className="stepper-form">
@@ -51,7 +51,7 @@ export default function RequestStepper({onSubmit}) {
                     <input placeholder="Time" name="time" onChange={valueOnChange} className="w-100" type="time" defaultValue={values.time} id="fare"/>
                 </div>
                 <div className="row justify-content-center mt-4">
-                <img src={'https://i.giphy.com/3oz8xKaR836UJOYeOc.webp'} style={{height: '200px', objectFit: 'contain'}} />
+                <img alt="" src={'https://i.giphy.com/3oz8xKaR836UJOYeOc.webp'} style={{height: '200px', objectFit: 'contain'}} />
             </div>
             </div>
         </Stepper>
@@ -61,22 +61,21 @@ export default function RequestStepper({onSubmit}) {
 function Requirements({data, value, onChange}) {
     const [requirementImage, setRequirementImage] = useState('');
 
-    useEffect(() => {
-        function initDefaulRequirementImage () {
-            if (value && value.length) {
-                setRequirementImage(getImageUrlFromRequirement(value));
+    const initDefaulRequirementImage = () => {
+        if (value && value.length) {
+            setRequirementImage(getImageUrlFromRequirement(value));
 
-            } else {
+        } else {
 
-                // default is the first requirment in the data array
-                const requirement = data.length ? data[0] : {};
-                setRequirementImage(requirement.image)
-            }
+            // default is the first requirment in the data array
+            const requirement = data.length ? data[0] : {};
+            setRequirementImage(requirement.image)
         }
+    }
 
+    useEffect(() => {
         initDefaulRequirementImage();
-
-    }, []);
+    });
 
     const valueOnChange = (event) => {
         onChange(event);
@@ -90,7 +89,7 @@ function Requirements({data, value, onChange}) {
             </select>
 
             <div className="row justify-content-center mt-4">
-                <img src={requirementImage} style={{height: '200px', objectFit: 'contain'}} />
+                <img alt="" src={requirementImage} style={{height: '200px', objectFit: 'contain'}} />
             </div>
         </div>
     )
