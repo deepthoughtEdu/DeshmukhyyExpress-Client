@@ -3,7 +3,7 @@ import React from "react";
 export default function NavBar(props) {
 
     return (
-        <header className="page-header mt-0">
+        <header className="page-header mt-0 position-fixed">
         <div className="d-flex justify-content-between w-100 align-items-center">
             <div className="d-flex">
             <img

@@ -67,9 +67,9 @@ export default function User (props) {
       <>
         <NavBar />
 
-        <div className="px-4 mt-5">
+        <div className="px-4 mt-5 background">
           <div className="row mt-5 justify-content-center">
-              <h3 className="">Orders and deliveries</h3>
+              <h1 className="pt-5 text-center">Orders and deliveries</h1>
           </div>
           
           <Slider {...settings}>

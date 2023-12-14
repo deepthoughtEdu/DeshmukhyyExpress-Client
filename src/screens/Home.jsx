@@ -11,12 +11,12 @@ export default function Home(props) {
     return (
         <>
             <NavBar />
-            <div className="container mt-5">
+            <div className="container mt-5 background">
                 <div className="row justify-content-center pt-5">
 
                   <div className="col-12 col-md-4 col-lg-3 mt-5">
                     <Link to={'/user'} className="justify-content-center d-flex">
-                      <Card className="text-center bg-dark-subtle border shadow" style={{width: '15rem', borderRadius: '12px'}}>
+                      <Card className="text-center bg-light border shadow" style={{width: '15rem', borderRadius: '12px'}}>
                         <Card.Title className="pt-4">
                           User
                         </Card.Title>
@@ -29,7 +29,7 @@ export default function Home(props) {
 
                   <div className="col-12 col-md-4 col-lg-3 mt-5">
                     <Link to={'/delivery-partner'} className="justify-content-center d-flex">
-                      <Card className="text-center bg-dark-subtle border shadow" style={{width: '15rem', borderRadius: '12px'}}>
+                      <Card className="text-center bg-light border shadow" style={{width: '15rem', borderRadius: '12px'}}>
                         <Card.Title className="pt-4">
                           Delivery Partner
                         </Card.Title>

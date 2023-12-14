@@ -29,8 +29,8 @@ export default function DeliveryPartner(props) {
     return (
       <>
         <NavBar />
-        <div className="container mt-5 pt-4">
-          <h4 className="mb-4 text-center">Pending requests</h4>
+        <div className="container mt-5 pt-4 background">
+          <h1 className="mb-4 text-center pt-5">Pending requests</h1>
           
           <div className="row justify-content-center">
             {requests.map((item, index) => {
