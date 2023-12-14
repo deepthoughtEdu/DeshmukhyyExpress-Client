@@ -19,7 +19,7 @@ export default function Home(props) {
                           User
                         </h1>
                         <Card.Body className="pb-4">
-                        <img alt="" src={"https://clipart-library.com/images/pi7rn845T.png"} style={{width: '250px', height: '220px'}} />
+                        <img src={"https://clipart-library.com/images/pi7rn845T.png"} style={{width: '250px', height: '220px'}} />
                         </Card.Body>
                       </Card>
                     </Link>

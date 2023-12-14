@@ -113,13 +113,13 @@ function SelectCategory({category, onChange}) {
                             <Card.Body>
                                 <Card.Title className="text-center">Food delivery</Card.Title>
                                 <Card.Subtitle className="my-2 text-muted text-center">
-                                    <FontAwesomeIcon className="text-center" icon={faCutlery} style={{height: '50px'}} />
+                                <img src={"https://www.blinkco.io/wp-content/uploads/2021/10/contactless-delivery-rider-blink-io.jpg"} className="w-100" style={{borderRadius: '5px', width: '150px', height: '85px'}} />
                                 </Card.Subtitle>
                             </Card.Body>
                         </Card>
                     </label>
                 </div>
-
+                
                 <div className="col-6 col-md-4">
                     <input className="d-none" onChange={(e) => valueOnChange(e, 'drop')} name="category" defaultChecked={category === 'drop'} type="checkbox" id="drop"></input>
                     <label htmlFor="drop">
@@ -127,7 +127,7 @@ function SelectCategory({category, onChange}) {
                             <Card.Body>
                                 <Card.Title className="text-center">Travel</Card.Title>
                                 <Card.Subtitle className="my-2 text-muted text-center">
-                                    <FontAwesomeIcon className="text-center" icon={faCarAlt} style={{height: '50px'}} />
+                                <img src={"https://static.tnn.in/thumb/msid-98108681,width-1280,height-720,resizemode-75/98108681.jpg"} className="w-100" style={{borderRadius: '5px', width: '150px', height: '85px'}} />
                                 </Card.Subtitle>
                             </Card.Body>
                         </Card>
