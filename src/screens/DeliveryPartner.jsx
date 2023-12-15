@@ -1,6 +1,9 @@
 // Step 1: Import necessary React and external libraries/modules
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import swal from "sweetalert";
+import aos from 'aos';
+import 'aos/dist/aos.css';
+
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import RequestCard from "../components/RequestCard";
@@ -12,7 +15,41 @@ import requirements from '../data/requirements.json';
 // Step 3: Define a functional component named 'DeliveryPartner'
 export default function DeliveryPartner(props) {
     // Step 4: Declare state variable and its setter method
-    const [requests, setRequests] = useState(data);
+    const [requests, setRequests] = useState([]);
+
+    // for implementation of infinite scroll
+    const endReached = useRef(false);
+    const itemsPerPage = useRef(3);
+    const currentPage = useRef(1);
+    const totalItems = useRef(data.length);
+    const interSectionOptions = useRef({
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5 // Adjust the threshold as needed
+      });
+
+
+
+    const loadCards = () => {
+        const start = (currentPage.current - 1) * itemsPerPage.current;
+        const end = start + itemsPerPage.current;
+        const currentItems = data.slice(start, end);
+
+        if (currentPage.current > Math.ceil(totalItems.current / itemsPerPage.current)) {
+            return endReached.current = true;
+        }
+        
+        currentPage.current = (Number(currentPage.current) + 1);
+        setRequests((previous) => previous.concat(currentItems));
+    }
+
+    const handleIntersect = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && currentPage.current <= Math.ceil(totalItems.current / itemsPerPage.current)) {
+            loadCards();
+          }
+        });
+      }
 
     // Step 5: Define function to handle order acceptance
     const onOrderAccept = async (event) => {
@@ -29,9 +66,19 @@ export default function DeliveryPartner(props) {
     // Step 6: Function to get image URL based on the requirement
     const getImageUrlFromRequirement = (requirement) => {
         // Find the matching requirement in the data and retrieve the image URL
-        let item = requirements.find(e => e.value == String(requirement).toLowerCase().split(' ').join(''));
+        let item = requirements.find(e => e.value === String(requirement).toLowerCase().split(' ').join(''));
         return item && item.image;
     }
+
+    // This hook runs when the page refreshes/reloads
+    useEffect(() => {
+        // Observe the div at page end.  Once it comes to the view port, execute the load cards method
+        const observer = new IntersectionObserver(handleIntersect, interSectionOptions.current);
+
+        observer.observe(document.getElementById('page-end'));
+
+        aos.init();
+    })
 
     // Step 7: Render the component
     return (
@@ -52,12 +99,14 @@ export default function DeliveryPartner(props) {
                                 // Step 7.4.1: Include an action button on the card
                                 actionButton={true}
                                 // Step 7.4.2: Customize styles for the card
-                                styles={{ width: "25rem" }}
+                                styles={{ width: "35rem", height: "28rem" }}
                                 // Step 7.4.3: Pass the order acceptance function to the card
                                 onOrderAccept={onOrderAccept}
                                 // Step 7.4.4: Pass data and image URL to the card
                                 data={item} key={index}
                                 image={getImageUrlFromRequirement(item.requirement)}
+                                classNames="m-5 shadow"
+                                initAOS={true}
                             />
                         )
                     })}
@@ -67,6 +116,7 @@ export default function DeliveryPartner(props) {
 
             {/* Step 7.5: Include the 'Footer' component */}
             <Footer />
+            <div id="page-end"></div>
         </>
     );
 }

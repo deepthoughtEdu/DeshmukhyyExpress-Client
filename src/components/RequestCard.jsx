@@ -10,7 +10,9 @@ const defaultImages = {
 };
 
 // Step 3: Define a functional component named 'RequestCard'
-export default function RequestCard({ data, onOrderAccept, image = '', styles = {}, actionButton = false }) {
+export default function RequestCard({ data, onOrderAccept, image = '', styles = {}, actionButton = false, classNames='', initAOS=false }) {
+
+    const containerClassNames = "action-card text-black px-0 position-relative " + classNames;
 
     // Step 4: Function to get the card image based on the category
     const getCardImage = (cardData) => {
@@ -24,7 +26,7 @@ export default function RequestCard({ data, onOrderAccept, image = '', styles = 
     return (
 
         // Step 5.1: Anchor link as the card container with additional classes and styles
-        <a href="#" className="action-card m-3 text-black px-0 position-relative" style={styles}>
+        <a href="#" className={containerClassNames} data-aos={initAOS && 'fade-up'} style={styles}>
 
             {/* Step 5.2: Ribbon to display the category */}
             <div className="ribbon pe-4 text-capitalize right">
