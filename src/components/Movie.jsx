@@ -13,7 +13,7 @@ export default function Movie({ data, styles = {},}) {
         <div className="ribbon pe-4 text-capitalize right">
             {data.category}
         </div>
-        <img src={'https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg'} alt="" className="card__img" />
+        <img src={'https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg'} className="card__img" />
         <span className="card__footer pb-2">
             <span className="text-capitalize">{data.moviename}</span>
             <span>{data.time}</span>
